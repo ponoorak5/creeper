@@ -1,38 +1,31 @@
 
 #include "MotorDC.h"
 
-MotorDC::MotorDC(int pin1, int pin2)
-: MotorDC(pin1, pin2, -1)
-{
-
-}
-
 MotorDC::MotorDC(int pin1, int pin2, int epin)
-:_pin1(pin1), _pin2(pin2), AnalogPin(epin)
-{
-    pinMode(_pin1 , OUTPUT);
-    pinMode(_pin2 , OUTPUT);
+    : _pin1(pin1, Output), _pin2(pin2, Output), _enable(epin, Output)
+
+{    
 }
 
 void MotorDC::speed(int s)
 { 
-  AnalogPin::write(s);  
+  _enable.write(s);  
 }
 
 void MotorDC::forward()
 {
-  digitalWrite(_pin1 , HIGH);
-  digitalWrite(_pin2 , LOW);
+  _pin1.write(High);
+  _pin2.write(Low);  
 }
  
 void MotorDC::back()
 {
-  digitalWrite(_pin1 , LOW);
-  digitalWrite(_pin2 , HIGH);
+  _pin1.write(Low);
+  _pin2.write(High);  
 }
 
 void MotorDC::stop()
 {
-  digitalWrite(_pin1 , LOW);
-  digitalWrite(_pin2 , LOW);
+  _pin1.write(Low);
+  _pin2.write(Low);
 }

@@ -3,8 +3,9 @@
 
 #include <Arduino.h>
 #include <AnalogPin.h>
+#include <DigitalPin.h>
 
-class MotorDC : AnalogPin
+class MotorDC
 {
     public:
         MotorDC(int pin1, int pin2);
@@ -14,8 +15,8 @@ class MotorDC : AnalogPin
         void stop();
         void speed(int s);
     private:
-        int _pin1;
-        int _pin2;      
+        DigitalPin _pin1;
+        DigitalPin _pin2;        
         AnalogPin _enable; 
 };
 

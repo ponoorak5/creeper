@@ -1,10 +1,6 @@
 #include <Led.h>
+#include <Pin.h>
 
-Led::Led()
-:Led(-1)
-{
-
-}
 
  Led::Led(int pin)
  :Led(pin, 255)
@@ -12,13 +8,14 @@ Led::Led()
  }
 
 Led::Led(int pin, int brightness)
-:AnalogPin(pin), _brightness(brightness)
+:AnalogPin(pin, Output), _brightness(brightness)
 {
 
 }
 
  void Led::brightness(int value)
  {
+     _brightness = value;
      AnalogPin::write(value);
  }
 

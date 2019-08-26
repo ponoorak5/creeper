@@ -7,7 +7,6 @@
 class Led : AnalogPin
 {
     public:
-        Led();
         Led(int pin);
         Led(int pin, int brightness);
         void brightness(int value);
