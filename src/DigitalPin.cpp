@@ -14,5 +14,5 @@ void DigitalPin::write(PinState value)
 
 PinState DigitalPin::read()
 {
-    digitalRead(pin());
+    return (PinState)digitalRead(pin());
 }
