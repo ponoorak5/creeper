@@ -9,9 +9,10 @@ enum PinState
     Low = LOW
 };
 
-class DigitalPin : Pin
+class DigitalPin : public Pin
 {
     public:
+        DigitalPin(const DigitalPin& p);
         DigitalPin(int pin, PinMode mode);
         void write(PinState value);
         PinState read();

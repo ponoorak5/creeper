@@ -7,7 +7,16 @@
 class Drive2DCMotors
 {
     public:
-        int add(int a, int b);
+        Drive2DCMotors(const MotorDC &l, const MotorDC &r);
+        void forward();
+        void back();
+        void clockwise(bool inplace);
+        void anticlockwise(bool inplace);
+        void stop();
+        void speed(int s);
+      private:
+        MotorDC _l;
+        MotorDC _r;
 };
 
 #endif

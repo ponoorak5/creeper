@@ -1,6 +1,12 @@
 
 #include <DigitalPin.h>
 
+DigitalPin::DigitalPin(const DigitalPin& p)
+:DigitalPin(p.pin(), p.mode())
+{
+
+}
+
 DigitalPin::DigitalPin(int pin, PinMode mode)
 :Pin(pin, mode)
 {

@@ -3,10 +3,10 @@
 
 #include <Pin.h>
 
-class AnalogPin : Pin
+class AnalogPin : public Pin
 {
-    public:        
-       // AnalogPin();        
+    public:
+       // AnalogPin();
         AnalogPin(int pin, PinMode mode);
         // 0 and 1023
         int read();

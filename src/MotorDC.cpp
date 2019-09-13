@@ -1,5 +1,10 @@
 #include "MotorDC.h"
 
+MotorDC::MotorDC(const MotorDC& c)
+:MotorDC(c._pin1.pin(), c._pin2.pin(), c._enable.pin())
+{
+}
+
 MotorDC::MotorDC(int pin1, int pin2, int epin)
     : _pin1(pin1, Output), _pin2(pin2, Output), _enable(epin, Output)
 

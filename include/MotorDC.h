@@ -8,6 +8,7 @@
 class MotorDC
 {
     public:
+        MotorDC(const MotorDC& c);
         MotorDC(int pin1, int pin2);
         MotorDC(int pin1, int pin2, int epin);
         void forward();
@@ -16,8 +17,8 @@ class MotorDC
         void speed(int s);
     private:
         DigitalPin _pin1;
-        DigitalPin _pin2;        
-        AnalogPin _enable; 
+        DigitalPin _pin2;
+        AnalogPin _enable;
 };
 
 #endif

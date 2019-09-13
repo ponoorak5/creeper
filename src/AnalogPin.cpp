@@ -17,11 +17,11 @@ void AnalogPin::write(int value)
     if (value < 0)
     {
         value = 0;
-    } 
+    }
     else if (value > 255)
     {
         value = 255;
     }
+    
     analogWrite(pin(), value);
 }
-
