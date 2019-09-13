@@ -13,23 +13,27 @@ MotorDC::MotorDC(int pin1, int pin2, int epin)
 
 void MotorDC::speed(int s)
 {
+  _speed = s;
   _enable.write(s);
 }
 
 void MotorDC::forward()
 {
+  //speed(_speed);
   _pin1.write(High);
   _pin2.write(Low);
 }
 
 void MotorDC::back()
 {
+  //speed(_speed);
   _pin1.write(Low);
   _pin2.write(High);
 }
 
 void MotorDC::stop()
 {
+  //speed(0);
   _pin1.write(Low);
   _pin2.write(Low);
 }

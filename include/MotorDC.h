@@ -19,6 +19,7 @@ class MotorDC
         DigitalPin _pin1;
         DigitalPin _pin2;
         AnalogPin _enable;
+        int _speed;
 };
 
 #endif
