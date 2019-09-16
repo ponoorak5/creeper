@@ -1,7 +1,7 @@
--IC:/home/arduino/tests/MotorDC/Motor1dc/include
--IC:/home/arduino/tests/MotorDC/Motor1dc/src
+-IC:/home/arduino/tests/MotorDC/Creeper/include
+-IC:/home/arduino/tests/MotorDC/Creeper/src
 -IC:/Users/psmie/.platformio/lib/Servo_ID883/src
--IC:/home/arduino/tests/MotorDC/Motor1dc/.pio/libdeps/uno/DHT_ID1671
+-IC:/home/arduino/tests/MotorDC/Creeper/.pio/libdeps/uno/DHT_ID1671
 -IC:/Users/psmie/.platformio/lib/Adafruit Unified Sensor_ID31
 -IC:/Users/psmie/.platformio/packages/framework-arduinoavr/cores/arduino
 -IC:/Users/psmie/.platformio/packages/framework-arduinoavr/variants/standard
