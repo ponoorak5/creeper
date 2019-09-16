@@ -41,7 +41,7 @@ void Drive2DCMotors::anticlockwise(bool inplace)
   }
   else
   {
-    _r.stop();
+    _l.stop();
   }
 }
 
