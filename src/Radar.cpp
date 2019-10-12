@@ -4,14 +4,16 @@
 #include <Radar.h>
 
 
-Radar::Radar(const Servo &s)
-: _s(s)
+Radar::Radar(const Servo &s, const EchoMeter& echo)
+: _s(s), _echo(echo), _basePosition(0)
 {
 
 }
 
 
-bool Radar::check()
+float Radar::check(int rad)
 {
-  
+  _s.write(rad);
+  delay(1000);
+  return _echo.distanceCm();
 }

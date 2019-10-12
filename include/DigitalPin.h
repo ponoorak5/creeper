@@ -16,6 +16,7 @@ class DigitalPin : public Pin
         DigitalPin(int pin, PinMode mode);
         void write(PinState value);
         PinState read();
+        unsigned long pulse(PinState value);
 };
 
 #endif

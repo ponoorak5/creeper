@@ -22,3 +22,8 @@ PinState DigitalPin::read()
 {
     return (PinState)digitalRead(pin());
 }
+
+unsigned long DigitalPin::pulse(PinState value)
+{
+  return pulseIn(pin(), value);
+}
