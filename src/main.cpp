@@ -15,35 +15,80 @@ Drive2DCMotors dc2(motorLeft, motorRight);
 
 Servo myservo;
 EchoMeter echo(9, 10);
+Radar radar(myservo, echo, 90);
 
-Radar radar(myservo, echo);
+
 
 int pos = 0;
 int dela = 2000;
+
+
 void setup()
 {
   Serial.begin(9600);
   myservo.attach(12);
+
+  dc2.speed(120);
+  dc2.stop();
 }
 
 void loop()
 {
 
+
+//delay(500);
+  Serial.print("ost 0   ");
+  Serial.println(radar.check(0));
+  //delay(1000);
+
+
+  if (radar.check(0) < 20)
+  {
+    dc2.stop();
+    delay(1000);
+    dc2.back();
+  }
+  else
+  {
+    dc2.forward();
+  }
+
+
+
 // Serial.print("Distance: ");
 // Serial.println(echo.distanceCm());
+// delay(1000);
 //
 // delay(500);
-Serial.print("ost 0   ");
-Serial.println(radar.check(0));
-delay(5000);
+// Serial.print("ost 0   ");
+// Serial.println(radar.check(0));
+// delay(5000);
+//
+// Serial.print("ost 90  ");
+// Serial.println(radar.check(90));
+// delay(5000);
+//
+// Serial.print("ost -90 ");
+// Serial.println(radar.check(-90));
+// delay(5000);
+//
+// Serial.print("ost 20   ");
+// Serial.println(radar.check(20));
+// delay(5000);
+//
+// Serial.print("ost -40  ");
+// Serial.println(radar.check(-40));
+// delay(5000);
 
-Serial.print("ost 90  ");
-Serial.println(radar.check(90));
-delay(5000);
+// Serial.print("ost 160 ");
+// Serial.println(radar.check(160));
+// delay(5000);
+//
+//
+// Serial.print("ost-160 ");
+// Serial.println(radar.check(-160));
+// delay(5000);
 
-Serial.print("ost 180 ");
-Serial.println(radar.check(180));
-delay(5000);
 
   // for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
   //   // in steps of 1 degree

@@ -4,8 +4,8 @@
 #include <Radar.h>
 
 
-Radar::Radar(const Servo &s, const EchoMeter& echo)
-: _s(s), _echo(echo), _basePosition(0)
+Radar::Radar(const Servo &s, const EchoMeter& echo, int basePosition)
+: _s(s), _echo(echo), _basePosition(basePosition)
 {
 
 }
@@ -13,7 +13,7 @@ Radar::Radar(const Servo &s, const EchoMeter& echo)
 
 float Radar::check(int rad)
 {
-  _s.write(rad);
-  delay(1000);
+  _s.write(rad + _basePosition);
+  delay(200);
   return _echo.distanceCm();
 }

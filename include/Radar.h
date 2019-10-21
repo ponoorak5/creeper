@@ -9,9 +9,10 @@ class Radar
 {
 
 public:
-  Radar(const Servo &s, const EchoMeter &echo);
+  Radar(const Servo &s, const EchoMeter &echo, int basePosition = 0);
   float check(int rad);
 private:
+  int _iDelay;
   Servo _s;
   EchoMeter _echo;
   int _basePosition;
