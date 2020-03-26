@@ -3,8 +3,8 @@
 #include <MotorDC.h>
 #include <Led.h>
 #include <LedRgb.h>
-#include <Servo.h>
-#include <dht.h>
+//#include <Servo.h>
+//#include <dht.h>
 #include <EchoMeter.h>
 #include <Radar.h>
 
@@ -21,7 +21,7 @@ Radar radar(myservo, echo, 90);
 
 int pos = 0;
 int dela = 2000;
-
+int distance = 20;
 
 void setup()
 {
@@ -32,24 +32,58 @@ void setup()
   dc2.stop();
 }
 
+
+int CheckRadar()
+{
+  if (radar.check(60) > distance)
+  {
+    return 1;
+  }
+
+  if (radar.check(-60) > distance)
+  {
+    return 2;
+  }
+
+  return 0;
+}
+
 void loop()
 {
-
-
-//delay(500);
+delay(5);
   Serial.print("ost 0   ");
-  Serial.println(radar.check(0));
+  //Serial.println(radar.check(0));
   //delay(1000);
 
 
-  if (radar.check(0) < 20)
+  if (radar.check(0) < distance)
   {
     dc2.stop();
     delay(1000);
     dc2.back();
+    delay(1500);
+    dc2.stop();
+    int dic = CheckRadar();
+    delay(1000);
+    if (dic == 1)
+    {
+        dc2.anticlockwise(true);
+        delay(1000);
+        dc2.stop();
+    }
+
+    if (dic == 2)
+    {
+        dc2.clockwise(true);
+        delay(1000);
+        dc2.stop();
+    }
+
   }
   else
   {
+    //dc2.stop();
+    //delay(1000);
     dc2.forward();
   }
 
