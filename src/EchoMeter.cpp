@@ -25,5 +25,5 @@ unsigned long EchoMeter::pulse()
 float const EchoMeter::distanceCm()
 {
   //return pulse();
-  return pulse() * SoundSpeedCmUs / 2.0;
+  return pulse() / 58;
 }
