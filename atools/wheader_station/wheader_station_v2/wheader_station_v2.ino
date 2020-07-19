@@ -153,7 +153,7 @@ void loop() {
     Serial.print(dewPoint);
     Serial.print(" *C ");  
 
-    float newaHum = dht.computeDewPoint(temperature, humidity, false);    
+    float newaHum = dht.computeAbsoluteHumidity(temperature, humidity, false);    
     absoluteHum = (int)newaHum;
     Serial.print("AbsHum: ");
     Serial.print(absoluteHum);

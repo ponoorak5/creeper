@@ -27,27 +27,33 @@ const char index_html[] PROGMEM = R"rawliteral(
   <i class='fas fa-thermometer-half' style='color:#059e8a;'></i> 
   <span class='dht-labels'>Temperatura</span>  
   <span id='temperature'>%TEMPERATURE%</span>
-</p>
- <p>
-  <i class='fal fa-humidity' style='color:#00E1FF;'></i>
-  <span class='dht-labels'>Wilgotność powietrza całkowita </span>
-  <span id='absolutehum'>%ABSOLUTEHUM%</span>
+  <sup class='units'>&deg;C</sup>
 </p>
 <p>
   <i class='fas fa-tint' style='color:#00add6;'></i> 
   <span class='dht-labels'>Wilgotność</span>
   <span id='humidity'>%HUMIDITY%</span>  
+  <sup class='units'>&#37;</sup>
  </p>
 <p>
-<i class='fas fa-fire-alt' style='color:#FF8900;'></i>    
+  <i class='fas fa-fire-alt' style='color:#FF8900;'></i>  
   <span class='dht-labels'>Temp Odczuwalna</span>
   <span id='heatindex'>%HEATIDX%</span>
+  <sup class='units'>&deg;C</sup>
 </p>
 <p>
 <i class="fas fa-snowflake" style='color:##2FCFFF;'></i>
   <span class='dht-labels'>Punkt rosy</span>
   <span id='devpoint'>%DEVPOINT%</span> 
+  <sup class='units'>&deg;C</sup>
  </p>
+<p>
+<i class="fas fa-water" style='color:#4FB2FF;'></i>  
+  <span class='dht-labels'>Ilość pary wodnej</span>
+  <span id='devpoint'>%ABSOLUTEHUM%</span> 
+  <sup class='units'>&#37;</sup>
+ </p>
+ 
 </body>
 <script>
 setInterval(function ( ) {
