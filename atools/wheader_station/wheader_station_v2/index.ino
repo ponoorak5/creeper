@@ -48,9 +48,16 @@ const char index_html[] PROGMEM = R"rawliteral(
   <sup class='units'>&deg;C</sup>
  </p>
 <p>
-<i class="fas fa-water" style='color:#4FB2FF;'></i>  
+  <i class="fas fa-water" style='color:#4FB2FF;'></i>  
   <span class='dht-labels'>Ilość pary wodnej</span>
   <span id='devpoint'>%ABSOLUTEHUM%</span> 
+  <sup class='units'>&#37;</sup>
+ </p>
+ 
+<p>
+  <i class='fas fa-temperature-high' styl ='color:#059e8a;'></i>
+  <span class='dht-labels'>Temperatura jakaś tam</span>
+  <span id='temphiha'>%TEMPHIHA%</span> 
   <sup class='units'>&#37;</sup>
  </p>
  
@@ -109,6 +116,29 @@ setInterval(function ( ) {
     }
   };
   xhttp.open('GET', '/absolutehum', true);
+  xhttp.send();
+}, 10000 ) ;
+
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById('absolutehum').innerHTML = this.responseText;
+    }
+  };
+  xhttp.open('GET', '/absolutehum', true);
+  xhttp.send();
+}, 10000 ) ;
+
+
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById('temphihaehum').innerHTML = this.responseText;
+    }
+  };
+  xhttp.open('GET', '/temphiha', true);
   xhttp.send();
 }, 10000 ) ;
 

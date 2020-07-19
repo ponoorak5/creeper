@@ -12,8 +12,8 @@ int temperature = 0;
 int humidity = 0;
 int heatIndex = 0;
 int dewPoint = 0;
-int absoluteHum = 0.0;
-int comfortRatio = 0.0;
+int absoluteHum = 0;
+int comfortRatio = 0;
 
 unsigned long previousMillis = 0;    // will store last time DHT was updated
 // Updates DHT readings every 20 seconds
@@ -71,6 +71,10 @@ void setup() {
     request->send_P(200, "text/plain", String(heatIndex).c_str());
   });
 
+  server.on("/temphiha", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send_P(200, "text/plain", String(comfortRatio).c_str());
+  });
+
   // Start server
   server.begin();
   Serial.print("done");
@@ -98,6 +102,10 @@ String processor(const String& var){
    else if(var == "ABSOLUTEHUM")
   {
     return String(absoluteHum);
+  }
+   else if(var == "TEMPHIHA")
+  {
+    return String(comfortRatio);
   }
   
   return String();
@@ -158,6 +166,12 @@ void loop() {
     Serial.print("AbsHum: ");
     Serial.print(absoluteHum);
     Serial.print(" % ");
+
+    float comfortNew = dht.computePerception(temperature, humidity, false);    
+    comfortRatio = (int)comfortNew;
+    Serial.print("Temperature HiHa: ");
+    Serial.print(comfortRatio);
+    Serial.print(" *C ");  
 
 
     Serial.println("");
