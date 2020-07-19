@@ -55,10 +55,11 @@ const char index_html[] PROGMEM = R"rawliteral(
  </p>
  
 <p>
+  <i class='fas fa-kiss-beam' styl ='color:#059e8a;'></i>
   <i class='fas fa-temperature-high' styl ='color:#059e8a;'></i>
-  <span class='dht-labels'>Temperatura jakaś tam</span>
+  <span class='dht-labels'>Temperatura hiha <br/> nie wiem jak to obliczyć </span>
   <span id='temphiha'>%TEMPHIHA%</span> 
-  <sup class='units'>&#37;</sup>
+  <sup class='units'>&deg;C</sup>
  </p>
  
 </body>
