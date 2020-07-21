@@ -55,7 +55,6 @@ const char index_html[] PROGMEM = R"rawliteral(
  </p>
  
 <p>
-  <i class='fas fa-kiss-beam' styl ='color:#059e8a;'></i>
   <i class='fas fa-temperature-high' styl ='color:#059e8a;'></i>
   <span class='dht-labels'>Temperatura zamarzania </span>
   <span id='temphiha'>%TEMPHIHA%</span> 
