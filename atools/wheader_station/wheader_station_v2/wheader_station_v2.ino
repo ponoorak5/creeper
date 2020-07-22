@@ -173,6 +173,22 @@ void loop() {
     Serial.print(comfortRatio);
     Serial.print(" *C ");  
 
+    WiFiClient client;
+    int retries = 5;
+    while(!client.connect(getServer(), 80) && (retries-- > 0)) {
+      Serial.print(".");
+    }
+    Serial.println();
+    if(!client.connected()) {
+     Serial.println("Failed to connect, going back to sleep");
+    }
+    
+    Serial.println("Request resource: " + getTSUrl()); 
+    String fullRequest = String("GET ") + getTSUrl() + "&field1=" + temperature + "&field2=" + humidity +
+                  " HTTP/1.1\r\n" +
+                  "Host: " + getServer() + "\r\n" + 
+                  "Connection: close\r\n\r\n";
+
 
     Serial.println("");
 
