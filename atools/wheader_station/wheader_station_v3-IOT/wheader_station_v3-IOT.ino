@@ -174,7 +174,47 @@ void loop() {
     Serial.print(" *C ");  
 
 
-    Serial.println("");
+    Serial.println("Send to IOT");
+    WiFiClient client;
+    int retries = 5;
+    while(!client.connect(getServer(), 80) && (retries-- > 0)) {
+      Serial.print(".");
+    }
+    Serial.println();
+    if(!client.connected()) {
+     Serial.println("Failed to connect, going back to sleep");
+    }
+    
+    Serial.println("Request resource: " + getTSUrl()); 
+    String fullRequest = String("GET ") + getTSUrl() + 
+                  "&field1=" + humidity + 
+                  "&field2=" + temperature +
+                  "&field3=" + heatIndex +
+                  "&field4=" + dewPoint +
+                  "&field5=" + absoluteHum +
+                  "&field6=" + comfortRatio +
+                  " HTTP/1.1\r\n" +
+                  "Host: " + getServer() + "\r\n" + 
+                  "Connection: close\r\n\r\n";
+
+    Serial.println(fullRequest);
+    client.print(fullRequest);
+
+
+    int timeout = 5 * 10; // 5 seconds             
+    while(!client.available() && (timeout-- > 0)){
+      delay(100);
+    }
+    if(!client.available()) {
+     Serial.println("No response, going back to sleep");
+    }
+    
+    while(client.available()){
+      Serial.write(client.read());
+    }
+  
+    Serial.println("\nclosing connection");
+    client.stop();
 
     digitalWrite(BUILD_LED, HIGH); // turn the LED off by making the voltage LOW
   }  

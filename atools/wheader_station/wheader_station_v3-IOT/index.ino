@@ -12,17 +12,18 @@ const char index_html[] PROGMEM = R"rawliteral(
      text-align: center;
     }
     h2 { font-size: 3.0rem; }
-    p { font-size: 3.0rem; }
+    p { font-size: 3.0rem;}
     .units { font-size: 1.2rem; }
     .dht-labels{
       font-size: 1.5rem;
       vertical-align:middle;
       padding-bottom: 15px;
     }
+    
   </style>
 </head>
 <body>
-  <h2>Pogoda teraz</h2>  
+  <h2>Dom</h2>  
 <p>
   <i class='fas fa-thermometer-half' style='color:#059e8a;'></i> 
   <span class='dht-labels'>Temperatura</span>  
@@ -42,7 +43,7 @@ const char index_html[] PROGMEM = R"rawliteral(
   <sup class='units'>&deg;C</sup>
 </p>
 <p>
-<i class="fas fa-snowflake" style='color:##2FCFFF;'></i>
+<i class="fas fa-snowflake" style='color:#2FCFFF;'></i>
   <span class='dht-labels'>Punkt rosy</span>
   <span id='devpoint'>%DEVPOINT%</span> 
   <sup class='units'>&deg;C</sup>
@@ -56,7 +57,7 @@ const char index_html[] PROGMEM = R"rawliteral(
  
 <p>
   <i class='fas fa-temperature-high' styl ='color:#059e8a;'></i>
-  <span class='dht-labels'>Temperatura zamarzania </span>
+  <span class='dht-labels'>Temp zamarzania </span>
   <span id='temphiha'>%TEMPHIHA%</span> 
   <sup class='units'>&deg;C</sup>
  </p>
