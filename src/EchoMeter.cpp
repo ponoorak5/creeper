@@ -25,5 +25,5 @@ unsigned long EchoMeter::pulse()
 float const EchoMeter::distanceCm()
 {
   //return pulse();
-  return pulse() / 58;
+  return pulse() / 29 / 2;
 }

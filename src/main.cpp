@@ -8,14 +8,14 @@
 #include <EchoMeter.h>
 #include <Radar.h>
 
-MotorDC motorLeft(2, 3, 6);
-MotorDC motorRight(4, 5, 6);
+//MotorDC motorLeft(2, 3, 6);
+//MotorDC motorRight(4, 5, 6);
 
-Drive2DCMotors dc2(motorLeft, motorRight);
+//Drive2DCMotors dc2(motorLeft, motorRight);
 
-Servo myservo;
-EchoMeter echo(9, 10);
-Radar radar(myservo, echo, 90);
+//Servo myservo;
+EchoMeter echo(7, 6);
+//Radar radar(myservo, echo, 90);
 
 
 
@@ -25,68 +25,39 @@ int distance = 20;
 
 void setup()
 {
-  Serial.begin(9600);
-  myservo.attach(12);
+   Serial.begin(9600);
+  // myservo.attach(12);
 
-  dc2.speed(120);
-  dc2.stop();
+  // dc2.speed(120);
+  // dc2.stop();
 }
 
 
-int CheckRadar()
-{
-  if (radar.check(60) > distance)
-  {
-    return 1;
-  }
+// int CheckRadar()
+// {
+//   if (radar.check(60) > distance)
+//   {
+//     return 1;
+//   }
 
-  if (radar.check(-60) > distance)
-  {
-    return 2;
-  }
+//   if (radar.check(-60) > distance)
+//   {
+//     return 2;
+//   }
 
-  return 0;
-}
+//   return 0;
+// }
 
 void loop()
 {
-delay(5);
-  Serial.print("ost 0   ");
+delay(500);
+  Serial.print("distance = ");
+  Serial.print(echo.distanceCm());
+  Serial.print("  cm");
+  Serial.println();
+
   //Serial.println(radar.check(0));
   //delay(1000);
-
-
-  if (radar.check(0) < distance)
-  {
-    dc2.stop();
-    delay(1000);
-    dc2.back();
-    delay(1500);
-    dc2.stop();
-    int dic = CheckRadar();
-    delay(1000);
-    if (dic == 1)
-    {
-        dc2.anticlockwise(true);
-        delay(1000);
-        dc2.stop();
-    }
-
-    if (dic == 2)
-    {
-        dc2.clockwise(true);
-        delay(1000);
-        dc2.stop();
-    }
-
-  }
-  else
-  {
-    //dc2.stop();
-    //delay(1000);
-    dc2.forward();
-  }
-
 
 
 // Serial.print("Distance: ");
