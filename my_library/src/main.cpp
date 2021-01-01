@@ -7,6 +7,15 @@
 //#include <dht.h>
 #include <EchoMeter.h>
 #include <Radar.h>
+#include <NewPing.h>
+
+#define TRIGGER_PIN  7  // Arduino pin tied to trigger pin on the ultrasonic sensor.
+#define ECHO_PIN     6  // Arduino pin tied to echo pin on the ultrasonic sensor.
+#define MAX_DISTANCE 100 // Maximum distance we want to ping for (in centimeters). Maximum sensor distance is rated at 400-500cm.
+
+NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); // NewPing setup of pins and maximum distance.
+
+
 
 //MotorDC motorLeft(2, 3, 6);
 //MotorDC motorRight(4, 5, 6);
@@ -51,10 +60,13 @@ void setup()
 void loop()
 {
 delay(500);
-  Serial.print("distance = ");
-  Serial.print(echo.distanceCm());
-  Serial.print("  cm");
-  Serial.println();
+  // Serial.print("distance = ");
+  // Serial.print(echo.distanceCm());
+  // Serial.print("  cm");
+  // Serial.println();
+  Serial.print("Ping: ");
+  Serial.print(sonar.ping_cm()); // Send ping, get distance in cm and print result (0 = outside set distance range)
+  Serial.println("cm");
 
   //Serial.println(radar.check(0));
   //delay(1000);
